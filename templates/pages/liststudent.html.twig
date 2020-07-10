@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+{% block title 'Gestion des étudiant' %}
+{% block body %}
+
+    <div class="container col-lg-12" style="background-color: white; border: solid 1px silver; border-radius: 5px">
+        <h1>Listes Etudiants</h1>
+
+
+        <table class="table table-striped table-bordered">
+            <thead>
+
+            <tr>
+                <th>Matricule</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Mail</th>
+                <th>Telephone</th>
+                <th>Adresse</th>
+                <th>TypeEtudiant</th>
+                <th>TypeBourse</th>
+                <th>NomDepartement</th>
+                <th>NumChambre</th>
+                <th colspan='2' width='50%'>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for etudiant in etudiants %}
+                <tr>
+                    <td>{{ etudiant.matricule }}</td>
+                    <td>{{ etudiant.prenom }}</td>
+                    <td>{{ etudiant.nom }}</td>
+                    <td>{{ etudiant.mail }}</td>
+                    <td>{{ etudiant.telephone }}</td>
+                    <td>{{ etudiant.adresse }}</td>
+                    <td>{{ etudiant.typeEtudiant }}</td>
+                    <td>{{ etudiant.typeBourse }}</td>
+                    <td>{{ etudiant.nomDepartement.nomDepartement}}</td>
+                    <td>{{ etudiant.numChambre}}</td>
+                    <td><a class="btn btn-primary" href="{{ path('lister.index', {'id': etudiant.id}) }}">Modifier</a></td>
+                    <td><a class="btn btn-danger" href="{{ path('delete_student.index', {'id': etudiant.id}) }}">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="text-center">
+            {{ knp_pagination_render(etudiants)}}
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block title 'Gestion des Chambres' %}
+{% block body %}
+{#{% dump(chambre) %}#}
+
+     <div class="container" style="background-color: white; border: solid 1px silver; border-radius: 5px">
+         <h1>Liste chambre</h1>
+         <table class="table table-striped table-bordered">
+             <thead>
+             <tr>
+                 <th>Numéro Batiment</th>
+                 <th>Numéro chambre</th>
+                 <th>Type Chambre</th>
+                 <th colspan='2' width='50%'>Action</th>
+             </tr>
+             </thead>
+             <tbody>
+                 {% for row in chambre %}
+
+                 <tr>
+                     <td>{{ row.numBatiment }}</td>
+                     <td>{{ row.numChambre }}</td>
+                     <td>{{ row.typeChambre }}</td>
+                     <td><a class="btn btn-primary" href="{{ path('list.index', {'id': row.id}) }}">Modifier</a></td>
+                     <td><a class="btn btn-danger" href="{{ path('delete_chambre.index', {'id': row.id}) }}">Supprimer</a></td>
+
+                 </tr>
+
+                 {% endfor %}
+             </tbody>
+         </table>
+
+
+         <div class="navigation text-center">
+             {{ knp_pagination_render(chambre) }}
+         </div>
+
+
+
+     </div>
+
+
+{% endblock %}

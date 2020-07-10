@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+{% block title 'Gestion des Chambres' %}
+{% block body %}
+
+    <div class="container" style="background-color: white; border: solid 1px silver; border-radius: 5px; padding: 10px">
+        <h2>Formulaire d'enregistrement chambre</h2>
+            <span>Note: Veuillez choisir un numéro de batiment et le numéro de chambre sera généré automatiquement.</span>
+        <br><br><br>
+
+        {{ form_start(form) }}
+            <div class="row">
+                <input type="hidden" id="chambre"  value="{% if nbrField is defined %}{{ nbrField }}{%endif%}">
+                <div class="col-md-6">{{ form_row(form.numBatiment)}}</div>
+                <div class="col-md-6">{{ form_row(form.typeChambre)}}</div>
+                <div class="col-md-6">{{ form_row(form.numChambre)}}</div>
+            </div>
+        <button class="btn btn-primary" type="submit">Enregistrer</button>
+        {{ form_end(form) }}
+    </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#chambre_numBatiment').change(function(){
+            nbrField=$('#chambre').val().toString().padStart(4,'0');
+            numBatiment=$('#chambre_numBatiment').val();
+            num=numBatiment.toString().padStart(3,'0');
+            $('#chambre_numChambre').attr(`value`, `${num}-${nbrField}`);
+        })
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+{% block title 'Enregistrer departement' %}
+{% block body %}
+
+    <div class="container" style="background-color: white; border: solid 1px silver; border-radius: 5px; padding: 10px;width: 70rem;">
+        <h1>departement</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.nomDepartement) }}
+
+        <button class="btn btn-primary" type="submit">Enregistrer</button>
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock %}

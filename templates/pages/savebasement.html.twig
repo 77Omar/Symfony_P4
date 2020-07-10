@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block title 'Enregistrer batiment' %}
+{% block body %}
+
+    <div class="container" style="background-color: white; border: solid 1px silver; border-radius: 5px; padding: 10px">
+        <h1>batiment</h1>
+        {{ form_start(form) }}
+            {{ form_row(form.numBatiment) }}
+
+            <button class="btn btn-primary" type="submit">Enregistrer</button>
+        {{ form_end(form) }}
+    </div>
+
+
+
+{% endblock %}
